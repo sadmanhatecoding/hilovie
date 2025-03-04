@@ -1,0 +1,10 @@
+/* Example of a media query for smaller screens like phones */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Adjust font size */
+  }
+  .your-class {
+    width: 100%; /* Adjust widths */
+    padding: 10px; /* Adjust padding */
+  }
+}
