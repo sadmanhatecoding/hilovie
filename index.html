@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Tracker</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to top right, #E6E6FA, #F5E1F0); /* Lavender to light pink gradient */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      color: #9B30FF; /* Purple color */
+      animation: sparkle 1.5s infinite alternate;
+      text-shadow: 0 0 8px #fff, 0 0 15px #9B30FF, 0 0 30px #9B30FF; /* Sparkling effect */
+      margin: 10px;
+    }
+
+    @keyframes sparkle {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #timeElapsed {
+      background-color: #FFFFFF;
+      color: #6A5ACD; /* Lavender text */
+      padding: 15px 30px;
+      border-radius: 20px;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .heart {
+      font-size: 5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .heart:hover {
+      transform: scale(1.2);
+      color: #FF69B4; /* Pink color */
+    }
+
+    img {
+      display: none;
+      margin-top: 20px;
+      border-radius: 15px;
+      width: 350px;
+      height: 350px;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #daisies {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      gap: 10px;
+    }
+
+    .daisy {
+      width: 50px;
+      animation: float 4s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-30px);
+      }
+    }
+
+    /* Background Hearts Animation */
+    .heart-background {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: url('https://cdn.pixabay.com/photo/2016/11/21/13/19/heart-1841503_960_720.png') no-repeat center center;
+      background-size: 10%;
+      animation: heartsMove 6s infinite ease-in-out;
+    }
+
+    @keyframes heartsMove {
+      0% {
+        background-position: -100% -100%;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Hi lovie, this is my first ever website code running from scratch</h1>
+  <h1>I want to dedicate it to you</h1>
+  <h1>Do you remember the first time you said those 3 magical words?</h1>
+  <h1>17th January 2023</h1>
+
+  <div id="timeElapsed"></div>
+
+  <div>
+    <span class="heart" onclick="showImage()"❤️</span>
+    <img id="coupleImage" src="mnta.jpg" alt="A special moment">
+  </div>
+
+  <div id="daisies">
+    <img class="daisy" src="png.png" alt="PNG Image">
+    <img class="daisy" src="png.png" alt="PNG Image">
+    <img class="daisy" src="png.png" alt="PNG Image">
+    <img class="daisy" src="png.png" alt="PNG Image">
+  </div>
+
+  <div class="heart-background"></div>
+
+  <script>
+    const startDate = new Date('2023-01-17T08:15:00'); // Replace with your date
+
+    function updateTime() {
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById('timeElapsed').textContent = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+    }
+
+    function showImage() {
+      const image = document.getElementById('coupleImage');
+      image.style.display = image.style.display === 'none' || image.style.display === '' ? 'block' : 'none';
+    }
+
+    setInterval(updateTime, 1000); // Update the time every second
+  </script>
+</body>
+</html>
